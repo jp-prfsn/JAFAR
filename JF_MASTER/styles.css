@@ -1,0 +1,158 @@
+// JAFAR - Stylesheet
+
+
+*{}
+body{margin: 0; background-color: #333333;}
+
+#topline{ background-color: #d14343;  height: 10px;}
+
+.container{
+	width: 80%;
+	margin: auto;
+}
+
+
+
+#header {
+	background-color: white;
+	padding: 25px 0px;
+}
+
+#header .grid{
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 20px;
+	grid-auto-rows: minmax(100px, auto);
+}
+
+#header .col-1{
+	grid-column: 1 / 2;
+	grid-row: 1;
+	padding-right:40px;
+	box-sizing: border-box;
+}
+
+#header .col-2{
+	grid-column: 2 / 3;
+	grid-row: 1;
+	text-align: right;
+	display: flex;
+    align-items: center;
+    justify-content: right;
+}
+ul{ margin-top: 0; margin-bottom: 0; padding-right: 0px; }
+ul li {
+	list-style-type: none;
+	display: inline-block;
+	
+	border:2px solid #333;
+	font-family: Arial, Helvetica, Sans-serif;
+	width: 140PX;
+	text-align: center;
+	margin: 2.5px 0px;
+	letter-spacing: 1.5px;
+}
+ul li a{ padding:5px; box-sizing: border-box; color: #333333; text-decoration:none; width: 100%; display: inline-block; transition: all 0.3s;}
+ul li a:hover {font-weight:bold; color: white; background-color: #333333;}
+
+
+
+#main {
+	background-color: #333333;
+	color: white;
+	font-family: monospace;
+	line-height: 1.5;
+	font-size: 14px;
+	padding: 40px 0px;
+}
+
+#main .grid{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+	grid-auto-rows: minmax(100px, auto);
+}
+
+#main .col-1{
+	grid-column: 1 / 2;
+	grid-row: 1;
+	padding-right:40px;
+	box-sizing: border-box;
+}
+#main .col-2{
+	grid-column: 2 / 4;
+	grid-row: 1;
+	//text-align: right;
+	border:1px solid white;
+	padding: 30px 0px 10px;
+}
+#main .col-3{
+	grid-column: 4 / 5;
+	grid-row: 1;
+	text-align: right;
+	
+}
+#sb-section {display: none;}
+#addAnother{ color: white; float:right; font-weight:bold; font-size:16px; display: block !important; width: 20px; cursor: pointer;height: 20px; margin-top:20px; text-align: center; line-height: 20px; border: 1px solid white;}
+#addAnother:hover{ background-color: white; color: #333333; }
+
+input[type="text"], select{ background-color: #333; border:1px solid white; border-radius: 0; color: white; }
+
+hr{border-color: white;}
+
+xmp{white-space: pre-wrap}
+.rules-table{border: 1px solid white; width: 100%; text-align: center; margin-top: 20px; table-layout: fixed; margin-bottom:30px; }
+
+h1, h2, h3{ color: white; display: inline-block; background-color: #d14343; margin-top: 0; padding: 0px 10px}
+
+/* FORM STYLES */
+.formline{ padding-bottom: 20px; padding-left: 30px;}
+input{ padding: 10px 20px; }
+.options{ display: none; }
+select{ padding: 10px 20px; font-size: 16px; }
+textarea { background-color: #333333; color: #f7bc2f; padding: 10px; width: 80%; }
+#tracking
+{
+    border: 1px solid white;
+    padding: 10px 20px;
+    display:none;
+    margin: 0px 20px 20px;
+}
+#addSegment{ cursor: pointer; }
+input[type=submit]{
+	background-color: #f7bc2f;
+	border: none;
+	font-size: 18px;
+	width: 200px;
+	cursor: pointer;
+}
+
+
+#addLine{ display: none; }
+
+#footer{
+	padding: 30px;
+	border-top: 1px solid white;
+	color: white;
+	margin-top: 30px;
+	font-family: sans-serif;
+	text-align: right;
+	background-color: #d14343;
+}
+
+#footer span{ background-color: #333333; padding: 10px; margin: 0px 5px; font-size: 12PX; letter-spacing: 1.5PX; font-weight: bold;}
+
+
+
+#main #errorLog{ font-size: 12px !important; color: white !important; }
+#download{ padding: 10px; background: #f7bc2f; float:right; margin-right: 20px; color: #111; text-decoration: none; margin-top:-10px;}
+#download:hover{ background: #333; color: #f7bc2f; border: 1px solid #f7bc2f; }
+
+
+@media screen and (max-width:800px){
+	#header .grid, #main .grid{ display: block; }
+	.col-1, .col-2, .col-3{ display: block; width: 100%; }
+	#header .col-2{ text-align: center; }
+	#header .col-1{ padding-right: 0; text-align: center; }
+	#header .col-1 img{width: 80%;}
+}
