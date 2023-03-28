@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JAFAR</title>
+        <meta charset="UTF-8">
+        <link href="styles.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/jpg" href="images/JAFAR-favicon.ico"/>
+        <link rel="icon" type="image/png" href="images/JAFAR-favicon.png"/>
+		<!--<link rel="icon" type="image/png" href="https://example.com/images/JAFAR-favicon.png"/>-->
+
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+
+    </head>
+    <body>
+    <div id="panelholder">
+        <div id="scroller">
+            <div class="panel">
+
+                <h3>1. Paste Original HTML</h3>
+                <label>Source Code:</label>
+                <textarea id="original" name="original" onchange="findUnusualTags()" placeholder="Go to 'view source' of the original template and paste that content here"></textarea>
+                <span class="nextButton" onclick="nextPage()">NEXT</span>
+                <!--<br>
+                or URL:
+                <br>
+                <input type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30">-->
+
+            </div><div class="panel">
+                
+                <h3>2. Configure Client Options</h3>
+                <br>
+                <label>Client:</label><br>
+                <select id="clientSelect" name="clientSelect">
+                    <option value="DEF">Select</option>
+                    <option value="EXP">HSBC Expat</option>
+                    <option value="BMU">HSBC Bermuda</option>
+                    <option value="MLT">HSBC Malta</option>
+                    <option value="CI">HSBC CIIOM</option>
+                    <option value="TP">Tradepoint</option>
+                    <option value="SFXIE">Screwfix Ireland</option>
+                </select>
+
+            </div><div class="panel"></div>
+        </div>
+    </div>
+
+    </body>
+    <script type="text/javascript" src="js/form.js">
+    </script>
+
+    <script>
+    var xpos = 0;
+        function nextPage(){
+            xpos -= 100;
+            $("#scroller").css("left", xpos + "%");
+        }
+    </script>
+
+</html>
