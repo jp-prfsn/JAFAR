@@ -3,7 +3,7 @@
     <head>
         <title>JAFAR</title>
         <meta charset="UTF-8">
-        <link href="styles.css" rel="stylesheet">
+        <link href="styles/styles.css" rel="stylesheet">
         <link rel="shortcut icon" type="image/jpg" href="images/JAFAR-favicon.ico"/>
         <link rel="icon" type="image/png" href="images/JAFAR-favicon.png"/>
 		<!--<link rel="icon" type="image/png" href="https://example.com/images/JAFAR-favicon.png"/>-->
@@ -47,11 +47,11 @@
 		    					<h3 style="margin-bottom: 2px;">Generic</h3>
 		    					<table class="rules-table" border="1" cellpadding="5" cellspacing="0">
 			    					<tr>
-			    						<th width="20%">Name
+			    						<th width="20%">Description
 			    						</th>
-			    						<th width="40%">Looks for:
+			    						<th width="40%">Find
 			    						</th>
-			    						<th width="40%">Replaces with:
+			    						<th width="40%">Replace with:
 			    						</th>
 			    					</tr>
 									
@@ -65,7 +65,7 @@
 										// for each client
 										foreach ($xml->client as $c)
 										{
-											echo "<tr><th colspan='3' align='left'>Client Name</th></tr>";
+											echo "<tr><th colspan='3' align='left' bgcolor='#CCC'>" . $c['name'] . "</th></tr>";
 											// for each rule
 											foreach ($c->rule as $r)
 											{
@@ -73,7 +73,7 @@
 												// for each node
 												foreach ($r->children() as $node)
 												{
-													echo "<td>" . $node . "</td>";
+													echo "<td><code>" . htmlspecialchars($node) . "</code></td>";
 												}
 												echo "</tr>";
 											}

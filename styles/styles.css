@@ -1,4 +1,4 @@
-// JAFAR - Stylesheet
+/* JAFAR - Stylesheet */
  
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,700;1,300&display=swap');
 *{box-sizing: border-box;}
@@ -63,8 +63,6 @@ header li a:hover{
 	box-sizing: border-box;
 	color: #333;
 	height: calc(75vh - 20px);
- 
-	float: left;
 	display: inline-block;
 	position: relative;
 	border-right:1px solid white;
@@ -145,7 +143,18 @@ input[type="text"], select{ background-color: #333; border:1px solid white; bord
 hr{border-color: white;}
 
 xmp{white-space: pre-wrap}
-.rules-table{border: 1px solid white; width: 100%; text-align: center; margin-top: 20px; table-layout: fixed; margin-bottom:30px; }
+
+/* Styles for Ruleset Page */
+.rules-table{
+	border: 1px solid white; 
+	width: 100%; 
+	text-align: center; 
+	margin-top: 20px; 
+	table-layout: fixed; 
+	margin-bottom:30px; 
+	color: white;
+}
+.rules-table tr td{ color: white;}
 
 h1, h2, h3{ color: white; display: inline-block; background-color: #d14343; margin-top: 0; padding: 0px 10px}
 

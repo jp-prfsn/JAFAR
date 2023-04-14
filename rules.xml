@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rules>
+    <!-- JAFAR RULSET -->
+    <!-- RULES grouped by client -->
+    <!-- Use CDATA tags to preserve code -->
+    <!-- HAVE FUN! -->
+
     <client name="Generic">
         <rule>
             <desc>Copyright Symbol</desc>
@@ -9,31 +14,52 @@
     </client>
 
     <!-- HSBC EXPAT-->
-    <!--<client name="HSBC Expat">
+    <client name="HSBC Expat">
         <rule>
             <desc>Mirror Link</desc>
-            <find>%%=v(@vawpURL)=%%</find>
-            <replace><%@ include view='expatMirrorLINKONLY' %></replace>
+            <find><![CDATA[%%=v(@vawpURL)=%%]]></find>
+            <replace><![CDATA[<%@ include view='expatMirrorLINKONLY' %>]]></replace>
         </rule>
         <rule>
             <desc>Salutation</desc>
-            <find>%%indv_titl_txt%% %%indv_last_name%%</find>
-            <replace><%= recipient.hsbcSalutation %></replace>
+            <find><![CDATA[%%indv_titl_txt%% %%indv_last_name%%]]></find>
+            <replace><![CDATA[<%= recipient.hsbcSalutation %>]]></replace>
         </rule>
         <rule>
             <desc>KD Tag</desc>
-            <find></body></find>
-            <replace><%@ include view='KickDynamicTag' %></body></replace>
+            <find><![CDATA[</body>]]></find>
+            <replace><![CDATA[<%@ include view='KickDynamicTag' %></body>]]></replace>
         </rule>
         <rule>
             <desc>Preference Link</desc>
-            <find>https://hsss.hsbc.co.uk/offshoreform/ecpp/contact_prefs.jsp?</find>
-            <replace><%= recipient.hsbcFootnote %></replace>
+            <find><![CDATA[https://hsss.hsbc.co.uk/offshoreform/ecpp/contact_prefs.jsp?]]></find>
+            <replace><![CDATA[<%= recipient.hsbcFootnote %>]]></replace>
         </rule>
         <rule>
             <desc>Cookie Link</desc>
-            <find><a href="https://www.expat.hsbc.com/cookie-notice/" style="color: #333; text-decoration: underline;">Cookie Policy</a>.</find>
-            <replace><% if ((recipient.hsbcResidency != "HONG KONG") && (recipient.hsbcResidency != "HK")) { %><a href="https://www.expat.hsbc.com/cookie-notice/" style="color: #333; text-decoration: underline;">Cookie Policy</a>.<%}else{%>Cookie Policy at expa&#8205;t.h&#8205;sb&#8205;c.c&#8205;om/cookie-notice/<%}%></replace>
+            <find><![CDATA[<a href="https://www.expat.hsbc.com/cookie-notice/" style="color: #333; text-decoration: underline;">Cookie Policy</a>.]]></find>
+            <replace><![CDATA[<% if ((recipient.hsbcResidency != "HONG KONG") && (recipient.hsbcResidency != "HK")) { %><a href="https://www.expat.hsbc.com/cookie-notice/" style="color: #333; text-decoration: underline;">Cookie Policy</a>.<%}else{%>Cookie Policy at expa&#8205;t.h&#8205;sb&#8205;c.c&#8205;om/cookie-notice/<%}%>]]></replace>
         </rule>
-    </client>-->
+        <rule>
+            <desc>Security Link</desc>
+            <find><![CDATA[<a href="https://www.expat.hsbc.com/help/security/" style="color: #333; text-decoration: underline;">Security Centre</a>.]]></find>
+            <replace><![CDATA[<% if ((recipient.hsbcResidency == "HONG KONG") || (recipient.hsbcResidency == "HK")) { %>Security Centre at expa&#8205;t.h&#8205;sb&#8205;c.c&#8205;om/help/security/<% } else { %><a href="https://www.expat.hsbc.com/help/security/" style="color: #333; text-decoration: underline;">Security Centre</a>.<% } %>]]></replace>
+        </rule>
+
+     
+
+
+    </client>
 </rules>
+
+
+<!--
+
+
+        <rule>
+            <desc></desc>
+            <find><![CDATA[]]></find>
+            <replace><![CDATA[]]></replace>
+        </rule>
+
+-->
