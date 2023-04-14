@@ -144,17 +144,7 @@ hr{border-color: white;}
 
 xmp{white-space: pre-wrap}
 
-/* Styles for Ruleset Page */
-.rules-table{
-	border: 1px solid white; 
-	width: 100%; 
-	text-align: center; 
-	margin-top: 20px; 
-	table-layout: fixed; 
-	margin-bottom:30px; 
-	color: white;
-}
-.rules-table tr td{ color: white;}
+
 
 h1, h2, h3{ color: white; display: inline-block; background-color: #d14343; margin-top: 0; padding: 0px 10px}
 
@@ -209,6 +199,24 @@ input[type=submit]{
 #main #errorLog{ font-size: 12px !important; color: white !important; }
 #download{ padding: 10px; background: #f7bc2f; float:right; margin-right: 20px; color: #111; text-decoration: none; margin-top:-10px;}
 #download:hover{ background: #333; color: #f7bc2f; border: 1px solid #f7bc2f; }
+
+
+
+
+
+/* Styles for Ruleset Page */
+.rules-table{
+	border: 1px solid white; 
+	width: 100%; 
+	text-align: center; 
+	margin-top: 20px; 
+	table-layout: fixed; 
+	margin-bottom:30px; 
+	color: white;
+}
+.rules-table tr td{ color: white;}
+
+
 
 
 @media screen and (max-width:800px){

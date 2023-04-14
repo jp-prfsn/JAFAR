@@ -11,6 +11,12 @@
             <find><![CDATA[©]]></find>
             <replace><![CDATA[&copy;]]></replace>
         </rule>
+        <rule>
+            <desc>Divider</desc>
+            <find><![CDATA[<hr style="margin: 0; border-top: 1px solid #d7d8d6;"/>]]></find>
+            <replace><![CDATA[<table cellspacing='0' cellpadding='0' width='100%' border='0' bgcolor='#d7d8d6'><tr><td style='font-size:1px; line-height: 1px;' height='1'>&nbsp;</td></tr></table>]]></replace>
+        </rule>
+        
     </client>
 
     <!-- HSBC EXPAT-->

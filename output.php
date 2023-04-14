@@ -31,7 +31,7 @@
 
 	
 
-	if($brand == 'EXP' || $brand == 'BMU' || $brand == 'MLT' || $brand == 'CI'){
+	if(strpos($brand, 'HSBC')){
 
 
 		// is RM box ticked?
@@ -75,30 +75,36 @@
 			}
 		}
 
+		// load the rules file
+		$url = 'rules.xml';
+		$xml = simplexml_load_file($url);
+		echo $brand;
+
+		// for each client
+		foreach ($xml->client as $c)
+		{
+			if($brand == $c["name"] || $c["name"] == "Generic"){
+				// if brand matches (or is generic)
+				// for each rule
+				foreach ($c->rule as $r)
+				{
+					// for each node
+					foreach ($r->children() as $node)
+					{
+						checkReplace($r[1], $r[2], $r[0]);
+					}
+				}
+			}
+ 			
+		}
+
 
 		
-		if($brand == 'EXP'){
+		if($brand == 'HSBC Expat'){
 			// EXPAT RULES
 
 
 			$copy = str_replace($campaignCode, "HSBC Expat", $copy);
-
-			// replace webversion
-			//checkReplace("%%=v(@vawpURL)=%%", "<%@ include view='expatMirrorLINKONLY' %>", "Mirror Link");
-			//-----------//
-
-			// replace salutation
-			//checkReplace("%%indv_titl_txt%% %%indv_last_name%%", "<%= recipient.hsbcSalutation %>", "Salutation");
-
-			// add KD tag
-			//checkReplace("</body>", "<%@ include view='KickDynamicTag' %></body>", "KD Tag");
-
-			// replace pref link
-			//checkReplace("https://hsss.hsbc.co.uk/offshoreform/ecpp/contact_prefs.jsp?", "<%= recipient.hsbcFootnote %>", "Preference Link");
-
-			// wrap masthead footer links for HK
-			//checkReplace('<th class="footer__bottom-links-container footer__bottom-links-container--center" style="padding: 20px 10px 0; display: inline-block;"><a href="https://www.expat.hsbc.com/contact/" aria-label="Contact us Contact us Opens in new window" style="color: #333; text-decoration: none;"><span class="footer__bottom-links-text" style="color: #333; text-decoration: underline; font-weight: 400;">Contact us</span></a></th><th class="footer__bottom-links-container footer__bottom-links-container--center" style="padding: 20px 10px 0; display: inline-block;"><a href="https://www.expat.hsbc.com/help/security/" aria-label="Security centre Security centre Opens in new window" style="color: #333; text-decoration: none;"><span class="footer__bottom-links-text" style="color: #333; text-decoration: underline; font-weight: 400;">Security centre</span></a></th>', '<% if ((recipient.hsbcResidency != "HONG KONG") && (recipient.hsbcResidency != "HK")) { %><th class="footer__bottom-links-container footer__bottom-links-container--center" style="padding: 20px 10px 0; display: inline-block;"><a href="https://www.expat.hsbc.com/contact/" aria-label="Contact us Contact us Opens in new window" style="color: #333; text-decoration: none;"><span class="footer__bottom-links-text" style="color: #333; text-decoration: underline; font-weight: 400;">Contact&nbsp;us</span></a></th><th class="footer__bottom-links-container footer__bottom-links-container--center" style="padding: 20px 10px 0; display: inline-block;"><a href="https://www.expat.hsbc.com/help/security/" aria-label="Security centre Security centre Opens in new window" style="color: #333; text-decoration: none;"><span class="footer__bottom-links-text" style="color: #333; text-decoration: underline; font-weight: 400;">Security&nbsp;centre</span></a></th><% } %>', "footer links for HK");
-	
 
 			
 		}else if($brand == 'MLT'){
@@ -188,8 +194,6 @@
 		
 
 		
-		// replace divider
-		checkReplace('<hr style="margin: 0; border-top: 1px solid #d7d8d6;"/>', "<table cellspacing='0' cellpadding='0' width='100%' border='0' bgcolor='#d7d8d6'><tr><td style='font-size:1px; line-height: 1px;' height='1'>&nbsp;</td></tr></table>", "Divider");
 
 		// fix malformed URL params
 		if(stripos($copy, "&?eid=") === false){
