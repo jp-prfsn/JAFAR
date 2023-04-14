@@ -100,14 +100,7 @@
 			//checkReplace('<th class="footer__bottom-links-container footer__bottom-links-container--center" style="padding: 20px 10px 0; display: inline-block;"><a href="https://www.expat.hsbc.com/contact/" aria-label="Contact us Contact us Opens in new window" style="color: #333; text-decoration: none;"><span class="footer__bottom-links-text" style="color: #333; text-decoration: underline; font-weight: 400;">Contact us</span></a></th><th class="footer__bottom-links-container footer__bottom-links-container--center" style="padding: 20px 10px 0; display: inline-block;"><a href="https://www.expat.hsbc.com/help/security/" aria-label="Security centre Security centre Opens in new window" style="color: #333; text-decoration: none;"><span class="footer__bottom-links-text" style="color: #333; text-decoration: underline; font-weight: 400;">Security centre</span></a></th>', '<% if ((recipient.hsbcResidency != "HONG KONG") && (recipient.hsbcResidency != "HK")) { %><th class="footer__bottom-links-container footer__bottom-links-container--center" style="padding: 20px 10px 0; display: inline-block;"><a href="https://www.expat.hsbc.com/contact/" aria-label="Contact us Contact us Opens in new window" style="color: #333; text-decoration: none;"><span class="footer__bottom-links-text" style="color: #333; text-decoration: underline; font-weight: 400;">Contact&nbsp;us</span></a></th><th class="footer__bottom-links-container footer__bottom-links-container--center" style="padding: 20px 10px 0; display: inline-block;"><a href="https://www.expat.hsbc.com/help/security/" aria-label="Security centre Security centre Opens in new window" style="color: #333; text-decoration: none;"><span class="footer__bottom-links-text" style="color: #333; text-decoration: underline; font-weight: 400;">Security&nbsp;centre</span></a></th><% } %>', "footer links for HK");
 	
 
-			// replace cookie link
-			checkReplace('<a href="https://www.expat.hsbc.com/cookie-notice/" style="color: #333; text-decoration: underline;">Cookie Policy</a>.', '<% if ((recipient.hsbcResidency != "HONG KONG") && (recipient.hsbcResidency != "HK")) { %><a href="https://www.expat.hsbc.com/cookie-notice/" style="color: #333; text-decoration: underline;">Cookie Policy</a>.<%}else{%>Cookie Policy at expa&#8205;t.h&#8205;sb&#8205;c.c&#8205;om/cookie-notice/<%}%>', "cookie link");
 			
-
-			// replace security link
-			checkReplace('<a href="https://www.expat.hsbc.com/help/security/" style="color: #333; text-decoration: underline;">Security Centre</a>.', '<% if ((recipient.hsbcResidency == "HONG KONG") || (recipient.hsbcResidency == "HK")) { %>Security Centre at expa&#8205;t.h&#8205;sb&#8205;c.c&#8205;om/help/security/<% } else { %><a href="https://www.expat.hsbc.com/help/security/" style="color: #333; text-decoration: underline;">Security Centre</a>.<% } %>', "security link");
-
-
 		}else if($brand == 'MLT'){
 
 			// MALTA RULES
