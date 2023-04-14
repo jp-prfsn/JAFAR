@@ -6,20 +6,23 @@
 
 	// which brand are we dealing with?
 	//$detectedBrand = substr($campaignCode, 4, 3); 
+
 	$brand = $_POST["clientSelect"];
-
-	echo $brand;
-
 	$numberOfSegments = $_POST["numberOfSegments"];
+
+	function writeLog($data) {
+		$output = $data;
+		echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+	}
 
 	function checkReplace($toFind, $replacement, $description) {
 		global $copy;
 		global $errorLog;
 		if(stripos($copy, $toFind) === false){
-			$errorLog .= "<div style='padding:10px 30px; background: #d14343; border-bottom:1px solid white;'><strong>" . $description . "</strong> has not been replaced!<span style='float:right; font-weight:bold; color:#white; font-size:25px; float:left; margin-left:-21px; line-height:18px;'>!</span></div>";
+			errorLog .= $toFind . "not found";
 		}else{
 			$copy = str_replace($toFind, $replacement, $copy);
-			$errorLog .= "<div style='padding:10px 30px; color:white; border-bottom:1px solid white;'><strong>" . $description . "</strong> has been replaced.</div>";
+			errorLog .= $toFind . "found and replaced";
 		}
 	}
 
@@ -116,18 +119,7 @@
 
 			checkReplace($campaignCode, "HSBC Malta", "Campaign Code");
 			
-			// replace webversion
-			checkReplace("%%=v(@vawpURL)=%%", "<%@ include view='MirrorPageUrl' %>", "Mirror Page URL");
-
-			// replace salutation
-			checkReplace("%%Indv_Titl_Txt%% %%Indv_Last_Name%%", "<%= recipient.salutation %> <%= recipient.lastName %>", "Salutation");
-
-			// replace pref link
-			checkReplace("https://dyn-regional.systems.uk.hsbc/content/hsbc-vam/mt/en_mt/messages/email/salesforce/personal-banking/business/%3C%@%20include%20view='Malta_Unsubscribe'%20%%3", "<%@ include view='Malta_Unsubscribe' %>", "Unsubscribe Link");
-
-			// add KD tag
-			$copy = str_replace("</body>", "<style>@media print{#_id { background-image: url('https://trackfun.it/track.ashx?a=p&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>');}} @media only screen and (max-width: 580px) {#_r { background-image: url('https://trackfun.it/track.ashx?a=r&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>');} } table.moz-email-headers-table {background-image:url('https://trackfun.it/track.ashx?a=f&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>')} div.OutlookMessageHeader {background-image:url('https://trackfun.it/track.ashx?a=f&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>')} blockquote #_id {background-image:url('https://trackfun.it/track.ashx?a=f&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>')} #MailContainerBody #_id {background-image:url('https://trackfun.it/track.ashx?a=f&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>')}</style><div id='_id'></div><div id='_r'></div><img src='https://trackfun.it/track.ashx?a=o&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>' alt='' width='1' height='1' border='0' /></body>", $copy);
-
+			
 		}else if($brand == 'BMU' || $brand == 'UK_'){
 
 			// BERMUDA RULES
@@ -421,29 +413,8 @@
 			}
 		}
 	}
-		
-
-
-
-	//-------- Create and download a HTML file to the desktop ---------//
-
-	// Write the contents back to the file
-	//file_put_contents($file, $copy);
-
-	/*if (file_exists($file)) {
-	    header('Content-Description: File Transfer');
-	    header('Content-Type: application/octet-stream');
-	    header('Content-Disposition: attachment; filename="'.basename($file).'"');
-	    header('Expires: 0');
-	    header('Cache-Control: must-revalidate');
-	    header('Pragma: public');
-	    header('Content-Length: ' . filesize($file));
-	    readfile($file);
-	    exit;
-	}*/
-	
-
 ?>
+
 
 
 <?php echo trim( $copy ) ?>

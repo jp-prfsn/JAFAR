@@ -51,13 +51,35 @@
             <find><![CDATA[<a href="https://www.expat.hsbc.com/help/security/" style="color: #333; text-decoration: underline;">Security Centre</a>.]]></find>
             <replace><![CDATA[<% if ((recipient.hsbcResidency == "HONG KONG") || (recipient.hsbcResidency == "HK")) { %>Security Centre at expa&#8205;t.h&#8205;sb&#8205;c.c&#8205;om/help/security/<% } else { %><a href="https://www.expat.hsbc.com/help/security/" style="color: #333; text-decoration: underline;">Security Centre</a>.<% } %>]]></replace>
         </rule>
+    </client>
 
-     
-
+    <client name="HSBC Malta">
+        <rule>
+            <desc>Mirror Page</desc>
+            <find><![CDATA[%%=v(@vawpURL)=%%]]></find>
+            <replace><![CDATA[<%@ include view='MirrorPageUrl' %>]]></replace>
+        </rule>
+        <rule>
+            <desc>Salutation</desc>
+            <find><![CDATA[%%Indv_Titl_Txt%% %%Indv_Last_Name%%"]]></find>
+            <replace><![CDATA[<%= recipient.salutation %> <%= recipient.lastName %>]]></replace>
+        </rule>
+        <rule>
+            <desc>Unsubscribe Link</desc>
+            <find><![CDATA[https://dyn-regional.systems.uk.hsbc/content/hsbc-vam/mt/en_mt/messages/email/salesforce/personal-banking/business/%3C%@%20include%20view='Malta_Unsubscribe'%20%%3", ]]></find>
+            <replace><![CDATA[<%@ include view='Malta_Unsubscribe' %>]]></replace>
+        </rule>
+        <rule>
+            <desc>KD tag</desc>
+            <find><![CDATA[</body>]]></find>
+            <replace><![CDATA[<style>@media print{#_id { background-image: url('https://trackfun.it/track.ashx?a=p&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>');}} @media only screen and (max-width: 580px) {#_r { background-image: url('https://trackfun.it/track.ashx?a=r&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>');} } table.moz-email-headers-table {background-image:url('https://trackfun.it/track.ashx?a=f&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>')} div.OutlookMessageHeader {background-image:url('https://trackfun.it/track.ashx?a=f&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>')} blockquote #_id {background-image:url('https://trackfun.it/track.ashx?a=f&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>')} #MailContainerBody #_id {background-image:url('https://trackfun.it/track.ashx?a=f&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>')}</style><div id='_id'></div><div id='_r'></div><img src='https://trackfun.it/track.ashx?a=o&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>' alt='' width='1' height='1' border='0' /></body>]]></replace>
+        </rule>
 
     </client>
 </rules>
 
+
+		
 
 <!--
 
