@@ -1,5 +1,62 @@
 var max_segments = 4;
 
+
+var page = 1;
+    var maxPage;
+    var xpos = 0;
+
+    // resize for amount of panels
+    function resizePanels(){
+        maxPage = $('.panel:visible').length;
+        $(".panel").css("width", 100/(maxPage) + "%");
+        $("#scroller").css("width", 100 * (maxPage) + "%");
+    }
+    
+    resizePanels();
+
+    var pcComplete;
+
+    // setup
+    pageTurn("none");
+
+    function hideImpossibleOptions(){
+        if(page == 1){
+            $(".backButton").css("display", "none");
+        }
+        else if(page == maxPage){
+            $(".nextButton").css("display", "none");
+        }
+        else{
+            $(".backButton").css("display", "inline-block");
+            $(".nextButton").css("display", "inline-block");
+        }
+    }
+    
+    function pageTurn(dir){
+
+
+        if(dir == "next" && page < maxPage){
+            // next page
+            xpos -= 100;
+            page ++;
+        }else if(dir == "back" && page > 1){
+            // prev page
+            xpos += 100;
+            page --;
+        }
+        $("#scroller").css("left", xpos + "%");
+        console.log(page + "/" + maxPage);
+
+        pcComplete = (page / maxPage)*100;
+ 
+        $("#pb-inner").css("width", pcComplete + "%");
+        hideImpossibleOptions();
+            
+
+        
+    }
+
+
 $( "input[name='segmentsYN']" ).click(function() {
     if ($('input.segmentsYN').is(':checked')) {
         $( "#tracking" ).css( "display", "block" );
@@ -126,7 +183,13 @@ function findUnusualTags(){
         $( "#strangeBeasts" ).append( '<div class="sb-remove" style="padding-bottom:10px;"><span class="tag-detected">' + newCodes[i] + '</span>: <input type="hidden" name="sb_' + i + '_name" value="' + newCodes[i] + '"><input type="text" name="sb_' + i + '_value" placeholder="recipient.' +newCodes[i]+ '"><br></div>');
         sb_num ++;
         document.getElementById('sb-num').value = sb_num;
-        if(newCodes.length == 0){ $( "#sb-section" ).hide(); }else{ $( "#sb-section" ).show(); }
+        if(newCodes.length == 0){
+            $( "#sb-section" ).hide();
+            resizePanels();
+        }else{
+            $( "#sb-section" ).show();
+            resizePanels();
+        }
     }
 }
 
@@ -134,7 +197,7 @@ function findUnusualTags(){
 var cstm_num = 0;
 
 function addAnother(){
-    $( "#customReplaceQueries" ).append( '<div style="margin-bottom:10px; padding-bottom:10px; border-bottom:1px solid white;">replace: <input type="text" style="margin-bottom:10px;" name="custom_replace_' + cstm_num + '" placeholder="this"><br>with: <input type="text" name="custom_with_' + cstm_num + '" placeholder="that"></div>');
+    $( "#customReplaceQueries" ).append( '<div style="margin-bottom:10px; padding-bottom:10px; border-bottom:1px solid white;">replace: <input type="text" style="margin-bottom:10px;" name="custom_replace_' + cstm_num + '" placeholder="this"> with: <input type="text" name="custom_with_' + cstm_num + '" placeholder="that"></div>');
 
     cstm_num ++;
     $('#cstm-num').val(cstm_num);
