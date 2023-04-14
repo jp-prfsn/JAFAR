@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JAFAR</title>
+        <meta charset="UTF-8">
+        <link href="styles/styles.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/jpg" href="images/JAFAR-favicon.ico"/>
+        <link rel="icon" type="image/png" href="images/JAFAR-favicon.png"/>
+		<!--<link rel="icon" type="image/png" href="https://example.com/images/JAFAR-favicon.png"/>-->
+
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    </head>
+    <body>
+		<div id="topline"></div>
+    	<div id="header">
+    		<div class="container">
+    			<div class="grid">
+	    			<div class="col-1">
+	    				<img src="images/JAFAR-logotype.png" width="300">
+	    			</div>
+	    			<div class="col-2">
+	    				<ul>
+	    					<li><a href="https://confluence.profusion.com/x/XgB0Aw" target="_blank">Docs</a></li>
+	    					<li><a href="mailto:jackp@profusion.com">Feedback</a></li>
+	    					<li><a href="ruleset.php" target="_blank">Ruleset</a></li>
+	    				</ul>
+	    			</div>
+	    		</div>
+    		</div>
+    	</div>
+    	
+
+    	<div id="main">
+    		<div class="container">
+    			<form action="output.php" method="post" target="_blank">
+	    			<div class="grid">
+		    			<div class="col-1">
+		    				<h2>About JAFAR</h2>
+	    					<p style="font-size: 13px; margin-top:0px; margin-bottom: 30PX;">
+	    						<STRONG>JAFAR</STRONG> will help to convert client generated HTML into Adobe-ready code. Follow the steps to the right. 
+	    						The user guide can be found <a href="https://confluence.profusion.com/x/XgB0Aw" style="color: #f7bc2f;" target="_blank">here</a>.
+	    					</p>
+
+	    					<h3>Error message?</h3>
+	    					<p style="font-size: 13px; margin-top: 0px;">If your HSBC link is not working you may need to replace the beginning of the URL:</p>
+	    					<P style="font-size: 13px; line-height: 15px;">https://dyn-regional.systems.uk.hsbc/</P>
+	    					<p style="font-size: 13px;">with:</p>
+	    					<p style="font-size: 13px; line-height: 15px;">https://www.hsbc.co.uk/</p>
+	    					
+		    			</div>
+		    			<div class="col-2">
+	    					<div>
+	    						<h3>1. Paste Original HTML</h3>
+	    						<br>
+	    						Source Code:
+	    						<br>
+	    						<textarea id="original" name="original" onchange="findUnusualTags()" placeholder="Go to 'view source' of the original template and paste that content here"></textarea>
+	    						<!--<br>
+	    						or URL:
+	    						<br>
+	    						<input type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30">-->
+	    						
+	    					</div>
+	    					<hr>
+
+
+	    					<!-- Client Select -->
+	    					<div class="panel" style="padding-top:20px;">
+	    						<h3>2. Configure Client Options</h3>
+	    						<br>
+								<label>Client:</label><br>
+								<select id="clientSelect" name="clientSelect">
+									<option value="Generic">Select</option>
+									<option value="HSBC Expat">HSBC Expat</option>
+									<option value="HSBC Bermuda">HSBC Bermuda</option>
+									<option value="HSBC Malta">HSBC Malta</option>
+									<option value="HSBC CIIOM">HSBC CIIOM</option>
+									<option value="Tradepoint">Tradepoint</option>
+									<option value="Screwfix Ireland">Screwfix Ireland</option>
+								</select>
+	    					</div>
+
+	    					<hr>
+
+	    					<!-- HSBC Expat -->
+	    					<div id="EXP-options" class="options">
+
+		    					<div class="formline" style="padding-top: 15px;">
+		    						<h3>Expat Template Options</h3>
+		    					</div>
+		    					<div class="formline">
+			        				<label for="segmentsYN">Tracked segments</label>
+
+			        				<input type="checkbox" name="segmentsYN" class="segmentsYN">
+			        			</div>
+		    					
+		    					<div class="formline" id="tracking">
+									<label for="lname">Output Campaign Tracking Tag:</label><br>
+									<div class="form-row">
+			            				<table id="tracking-tag-table">
+			            					<tr>
+			                					<th align="left">Segment
+			            						</th>
+			            						<th align="left">Tracking Code
+			            						</th>
+			            					</tr>
+			            					<tr>
+			            						<td>
+			                                        <input type="text" name="newtrackingseg00" placeholder="Segment Number (e.g. '1')">
+			            						</td>
+			            						<td>
+			                                        <input type="text" name="newtrackingtag00" placeholder="Tracking Code (e.g. 'EML_EXP_EN_29558_0)">
+			            						</td>
+			            					</tr>
+			            					<tr>
+			            						<td>
+			            							<input type="text" name="newtrackingseg01" placeholder="Segment Number (e.g. '2')">
+			            						</td>
+			            						<td><input type="text" name="newtrackingtag01" placeholder="Tracking Code (e.g. 'EML_EXP_EN_29558_1)">
+			            						</td>
+			            					</tr>
+			            					<tr>
+			            						<td>
+			            							<input type="text" name="newtrackingseg02" placeholder="Segment Number (e.g. '3')">
+			            						</td>
+			            						<td><input type="text" name="newtrackingtag02" placeholder="Tracking Code (e.g. 'EML_EXP_EN_29558_2)">
+			            						</td>
+			            					</tr>
+			            					<tr>
+			            						<td>
+			            							<input type="text" name="newtrackingseg03" placeholder="Segment Number (e.g. '4')">
+			            						</td>
+			            						<td>
+			                                        <input type="text" name="newtrackingtag03" placeholder="Tracking Code (e.g. 'EML_EXP_EN_29558_3)">
+			            						</td>
+			            					</tr>
+			            				</table>
+			                            <div id="addSegment" title="Add another segment">+</div>
+			                            <input type="hidden" name="numberOfSegments">
+			            			</div>
+		    					</div>
+
+		    					<div class="formline">
+			        				<label for="RM">RM signoff</label>
+
+			        				<input type="checkbox" name="RM">
+			        			</div>
+		    				</div>
+		    				<!-- -->
+
+		    				<!-- HSBC Bermuda -->
+	    					<div id="BMU-options" class="options">
+
+		    					<div class="formline" style="padding-top: 15px;">
+		    						<h3>Bermuda Template Options</h3>
+		    					</div>
+		    					<div class="formline">
+		    						No options available
+		    					</div>
+		    				</div>
+		    				<!-- -->
+
+		    				<!-- HSBC Malta -->
+	    					<div id="MLT-options" class="options">
+
+		    					<div class="formline" style="padding-top: 15px;">
+		    						<h3>Malta Template Options</h3>
+		    					</div>
+		    					<div class="formline">
+		    						No options available
+		    					</div>
+		    				</div>
+		    				<!-- -->
+
+		    				<!-- HSBC Malta -->
+	    					<div id="CI-options" class="options">
+
+		    					<div class="formline" style="padding-top: 15px;">
+		    						<h3>CIIOM Template Options</h3>
+		    					</div>
+		    					<div class="formline">
+		    						No options available
+		    					</div>
+		    				</div>
+		    				<!-- -->
+
+		    				<!-- Tradepoint -->
+	    					<div id="TP-options" class="options">
+
+		    					<div class="formline" style="padding-top: 15px;">
+		    						<h3>TradePoint Template Options</h3>
+		    					</div>
+		    					<div class="formline">
+		    						No options available
+		    					</div>
+		    				</div>
+		    				<!-- -->
+
+		    				<hr id="addLine">
+	    					
+	    					<div class="panel" style="padding-top:20px;" align="left">
+	    						<h3>3. Convert the template</h3>
+	    						<br>
+	    						<div align="left">
+								<input type="submit" value="Convert">
+								</div>
+	    					</div>
+
+						
+		    			</div>
+		    			<div class="col-3">
+		    				
+		    				<div class="formline" id="sb-section" style="padding-bottom: 40px;">
+			    				<h3 style="margin-bottom: 2px;">Strange beasts</h3>
+		    					<p>I detected some unusual tags. <br>How should I correct these?</p>
+
+		    					<div id="strangeBeasts">
+		    					<input type="hidden" name="sb-num" id="sb-num">
+		    						
+
+
+		    					</div>
+	    					</div>
+	    					
+
+	    					
+	    					<div class="formline">
+		    					<h3 style="margin-bottom: 2px;">Custom replace (advanced users)</h3>
+
+		    					<p>Any other replacements I can make for you today sire?</p>
+
+		    					<div id="customReplaceQueries">
+		    						<input type="hidden" name="cstm-num" id="cstm-num">
+
+			    				</div>
+			    				<div>
+			    					<span id="addAnother" onclick="addAnother()">+</span>
+			    				</div>
+	    					</div>
+	    					
+		    			</div>
+		    		</div>
+		    	</form> 
+    		</div>
+    	</div>
+    	<div id="footer">
+    	<span>JAFAR</span>
+    	<span>PROFUSION</span>
+    	<span>2021</span>
+    	</div>
+    </body>
+	<script type="text/javascript" src="scripts/form.js">
+    </script>
+
+</html>
