@@ -1,7 +1,7 @@
 # JAFAR
 ## HTML Conversion tool for Adobe Campaign ready templates
 
-<img src="Visuals/JAFAR-logotype.png" width="200" height="auto">
+<img src="images/promo/JAFAR-logotype.png" width="200" height="auto">
 
 JAFAR is an interface and a PHP script which looks for a number of pre-defined code snippets in a template and replaces them with Adobe friendly versions.
 

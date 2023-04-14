@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules>
+    <client name="Generic">
+        <rule>
+            <desc>Copyright Symbol</desc>
+            <find><![CDATA[©]]></find>
+            <replace><![CDATA[&copy;]]></replace>
+        </rule>
+    </client>
+
+    <!-- HSBC EXPAT-->
+    <!--<client name="HSBC Expat">
+        <rule>
+            <desc>Mirror Link</desc>
+            <find>%%=v(@vawpURL)=%%</find>
+            <replace><%@ include view='expatMirrorLINKONLY' %></replace>
+        </rule>
+        <rule>
+            <desc>Salutation</desc>
+            <find>%%indv_titl_txt%% %%indv_last_name%%</find>
+            <replace><%= recipient.hsbcSalutation %></replace>
+        </rule>
+        <rule>
+            <desc>KD Tag</desc>
+            <find></body></find>
+            <replace><%@ include view='KickDynamicTag' %></body></replace>
+        </rule>
+        <rule>
+            <desc>Preference Link</desc>
+            <find>https://hsss.hsbc.co.uk/offshoreform/ecpp/contact_prefs.jsp?</find>
+            <replace><%= recipient.hsbcFootnote %></replace>
+        </rule>
+        <rule>
+            <desc>Cookie Link</desc>
+            <find><a href="https://www.expat.hsbc.com/cookie-notice/" style="color: #333; text-decoration: underline;">Cookie Policy</a>.</find>
+            <replace><% if ((recipient.hsbcResidency != "HONG KONG") && (recipient.hsbcResidency != "HK")) { %><a href="https://www.expat.hsbc.com/cookie-notice/" style="color: #333; text-decoration: underline;">Cookie Policy</a>.<%}else{%>Cookie Policy at expa&#8205;t.h&#8205;sb&#8205;c.c&#8205;om/cookie-notice/<%}%></replace>
+        </rule>
+    </client>-->
+</rules>
