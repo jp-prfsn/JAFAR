@@ -8,6 +8,8 @@
 	//$detectedBrand = substr($campaignCode, 4, 3); 
 	$brand = $_POST["clientSelect"];
 
+	echo $brand;
+
 	$numberOfSegments = $_POST["numberOfSegments"];
 
 	function checkReplace($toFind, $replacement, $description) {
@@ -27,6 +29,28 @@
 	    $campaignCode = $match[1];
 	}else{
 		$errorLog .= "The title tag could not be found.<br>";
+	}
+
+	// load the rules file
+	$url = 'rules.xml';
+	$xml = simplexml_load_file($url);
+	
+	// for each client
+	foreach ($xml->client as $c)
+	{
+		if($c["name"] == $brand || $c["name"] == "Generic"){
+			// if brand matches (or is generic)
+			
+			foreach ($c->rule as $r)
+			{
+				$childarray = $r->children();
+				//echo $childarray[1] . " " . $childarray[2] . " " . $childarray[0] . "<hr>";
+				// for each rule, run checkreplace on it's children
+				checkReplace((string)$childarray[1], (string)$childarray[2], $childarray[0]);
+				
+			}
+		}
+		 
 	}
 
 	
@@ -75,28 +99,7 @@
 			}
 		}
 
-		// load the rules file
-		$url = 'rules.xml';
-		$xml = simplexml_load_file($url);
-		echo $brand;
-
-		// for each client
-		foreach ($xml->client as $c)
-		{
-			if($brand == $c["name"] || $c["name"] == "Generic"){
-				// if brand matches (or is generic)
-				// for each rule
-				foreach ($c->rule as $r)
-				{
-					// for each node
-					foreach ($r->children() as $node)
-					{
-						checkReplace($r[1], $r[2], $r[0]);
-					}
-				}
-			}
- 			
-		}
+		
 
 
 		

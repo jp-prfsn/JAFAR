@@ -88,11 +88,11 @@ function checkClient(){
     let codebox = $( "#original" ).val();
 
     var codeArr = [
-        ['EXP_', 'EXP'],
-        ['BMU_', 'BMU'],
-        ['MLT_', 'MLT'],
-        ['CI_', 'CI'],
-        ['TradePoint', 'TP']
+        ['EXP_', 'HSBC Expat'],
+        ['BMU_', 'HSBC Bermuda'],
+        ['MLT_', 'HSBC Malta'],
+        ['CI_', 'HSBC CIIOM'],
+        ['TradePoint', 'Tradepoint']
     ];
     
     for(let i = 0; i < codeArr.length; i++){
@@ -107,10 +107,11 @@ function checkClient(){
 
 // show / hide options //
 $( "#clientSelect" ).change(function revealOptions() {
-
+    console.log("Client Changed");
     var client = $( "#clientSelect" ).val();
 
-    var fullClientName = client + "-options";
+    var fullClientName = client.replace(/\s/g, '') + "-options";
+    console.log(fullClientName);
     
     var element = document.getElementById(fullClientName);
     var addLine = document.getElementById(addLine);
