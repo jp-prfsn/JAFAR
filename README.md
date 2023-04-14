@@ -1,7 +1,7 @@
 # JAFAR
 ## HTML Conversion tool for Adobe Campaign ready templates
 
-JAFAR is an acronym. It stands for Jack's Automated Find And Replace. I am Jack. Hello!
+![JAFAR logo](Visuals/JAFAR-logotype.png)
 
 JAFAR is an interface and a PHP script which looks for a number of pre-defined code snippets in a template and replaces them with Adobe friendly versions.
 
