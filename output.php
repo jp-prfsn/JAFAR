@@ -12,17 +12,17 @@
 
 	function writeLog($data) {
 		$output = $data;
-		echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+		echo "<script>console.log('LOG: " . $output . "' );</script>";
 	}
 
 	function checkReplace($toFind, $replacement, $description) {
 		global $copy;
 		global $errorLog;
 		if(stripos($copy, $toFind) === false){
-			errorLog .= $toFind . "not found";
+			writeLog($description . " not found");
 		}else{
 			$copy = str_replace($toFind, $replacement, $copy);
-			errorLog .= $toFind . "found and replaced";
+			writeLog($description . " found and replaced");
 		}
 	}
 
