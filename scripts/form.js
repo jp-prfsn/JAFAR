@@ -302,7 +302,7 @@
             // some unused classes
             document.getElementById("codeDoctorClassReport").textContent = 
             `About ${((totalUnusedClasses/matches.length)*100).toPrecision(2)}% of the classes I found are seemingly unused.`;
-        }else if( ((totalUnusedClasses/matches.length)*100) < 50 ){
+        }else{
             // some unused classes
             document.getElementById("codeDoctorClassReport").textContent = 
             `About ${((totalUnusedClasses/matches.length)*100).toPrecision(2)}% of the classes I found are seemingly unused. That's pretty high!`;
@@ -331,16 +331,7 @@
         }
     });
 
-    // Toggle styling setting
-    $( "#modetoggle" ).click(function() {
-        $( "body" ).toggleClass("darkmode");
-        if($("#j_logo").attr("src") == "images/JAFAR-logotype.png"){
-            $("#j_logo").attr("src", "images/JAFAR-logotype-rev.png");
-        }else{
-            $("#j_logo").attr("src", "images/JAFAR-logotype.png");
-        }
-        
-    });
+    
 
 
     // run setup functions

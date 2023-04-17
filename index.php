@@ -9,30 +9,12 @@
         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     </head>
     <body>
-        <span id="modetoggle"></span>
+        
+
+        <?php include 'header.php';?>
+
         <form action="output.php" method="post" target="_blank">
-            <header>
-                <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td align="left">
-                            <img src="images/JAFAR-logotype.png" width="300" id="j_logo">
-                        </td>
-                        <td align="right">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td>
-                                        <ul>
-                                            <li><a href="https://confluence.profusion.com/x/XgB0Aw" target="_blank">Docs</a></li>
-                                            <li><a href="mailto:jackp@profusion.com">Feedback</a></li>
-                                            <li><a href="ruleset.html" target="_blank">Ruleset</a></li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </header>
+            
             <div id="panelholder">
                 <span class="backButton" onclick="pageTurn('back')">BACK</span>
                 <span class="nextButton" onclick="pageTurn('next')">NEXT</span>
@@ -230,11 +212,5 @@
     </body>
     <script type="text/javascript" src="scripts/form.js"></script>
 
-    <script>
-
-
     
-
-    </script>
-
 </html>

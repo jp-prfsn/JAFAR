@@ -11,40 +11,29 @@
         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     </head>
     <body>
-		<div id="topline"></div>
-    	<div id="header">
-    		<div class="container">
-    			<div class="grid">
-	    			<div class="col-1">
-	    				<img src="images/JAFAR-logotype.png" width="300">
-	    			</div>
-	    			<div class="col-2">
-	    				<ul>
-	    					<li><a href="https://confluence.profusion.com/x/XgB0Aw" target="_blank">Docs</a></li>
-	    					<li><a href="mailto:jackp@profusion.com">Feedback</a></li>
-	    					<li><a href="#" target="_blank">Ruleset</a></li>
-	    				</ul>
-	    			</div>
-	    		</div>
-    		</div>
-    	</div>
+		
+
+		<?php include 'header.php';?>
     	
 
-    	<div id="main">
+    	<div id="main" align="center">
     		<div class="container">
     			
 	    			<div class="grid">
 		    			<div class="col-1">
 		    				<h2>About JAFAR rulesets</h2>
-	    					<p style="font-size: 16px; margin-top:0px; margin-bottom: 30PX;"><STRONG>JAFAR</STRONG> uses prewritten rules in order to find and replace items in your template. This is a list of every snippet that JAFAR will look for, ordered by client.</p>
+
+	    					<p style="font-size: 16px; margin-top:0px; margin-bottom: 30PX;">
+								<STRONG>JAFAR</STRONG> uses prewritten rules in order to find and replace items in your template. <br>
+								This is a list of every snippet that JAFAR will look for, ordered by client.
+							</p>
 
 	    					
 	    					
 		    			</div>
 		    			<div class="col-2" style="">
 
-		    				<div class="formline" style="padding-bottom: 40px; padding-right: 30px;">
-		    					<h3 style="margin-bottom: 2px;">Generic</h3>
+		    				<div style="padding-bottom: 40px; padding-right: 30px;">
 		    					<table class="rules-table" border="1" cellpadding="5" cellspacing="0">
 			    					<tr>
 			    						<th width="20%">Description
@@ -65,7 +54,7 @@
 										// for each client
 										foreach ($xml->client as $c)
 										{
-											echo "<tr><th colspan='3' align='left' bgcolor='#CCC'>" . $c['name'] . "</th></tr>";
+											echo "<tr><th colspan='3' align='left' class='thRow'>" . $c['name'] . "</th></tr>";
 											// for each rule
 											foreach ($c->rule as $r)
 											{
