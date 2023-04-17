@@ -45,7 +45,7 @@
 
                         <h3>1. Paste Original HTML</h3>
                         <label>Source Code:</label>
-                        <textarea id="original" name="original" onchange="findUnusualTags()" placeholder="Go to 'view source' of the original template and paste that content here"></textarea>
+                        <textarea id="original" name="original" onchange="onHTMLchange()" placeholder="Go to 'view source' of the original template and paste that content here"></textarea>
                         <select id="clientSelect" name="clientSelect">
                             <option value="General">Which client?</option>
                             <option value="HSBC Expat">HSBC Expat</option>
@@ -208,6 +208,16 @@
                         <div id="customReplaceQueries">
                             <input type="hidden" name="cstm-num" id="cstm-num">
                         </div>
+
+                    </div><div class="panel">
+
+                        <h3>Code Doctor</h3>
+                        <div id="codeDoctorSizeReport"></div>
+                        <div id="codeDoctorClassReport"></div>
+                        <ul id="unusedClasses">
+
+                        </ul>
+
 
                     </div><div class="panel">
                         <h3>4. Submit it</h3>

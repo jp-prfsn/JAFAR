@@ -1,12 +1,12 @@
 <?php
 
-	// get original input
+	// get original input & create empty error log
 	$copy = $_POST["original"];
 	$errorLog = "";
 
 	// which brand are we dealing with?
+	// TODO: Detect brand from content
 	//$detectedBrand = substr($campaignCode, 4, 3); 
-
 	$brand = $_POST["clientSelect"];
 	$numberOfSegments = $_POST["numberOfSegments"];
 
@@ -25,6 +25,20 @@
 			writeLog($description . " found and replaced");
 		}
 	}
+
+	function findOrphanedStyles(){
+
+
+		$classes = array();
+		$lastPos = 0;
+
+		while (($lastPos = strpos($copy, $classPattern, $lastPos))!== false) {
+			$classes[] = $lastPos;
+			$lastPos = $lastPos + strlen($needle);
+		}
+	}
+
+
 
 
 	// GET TITLE //
