@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>JAFAR</title>
-        <meta charset="UTF-8">
-        <link href="styles/styles.css" rel="stylesheet">
-        <link rel="shortcut icon" type="image/jpg" href="images/JAFAR-favicon.ico"/>
-        <link rel="icon" type="image/png" href="images/JAFAR-favicon.png"/>
-		<!--<link rel="icon" type="image/png" href="https://example.com/images/JAFAR-favicon.png"/>-->
-
-        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-    </head>
-    <body>
-		
-
-		<?php include 'header.php';?>
+<?php include 'header.php';?>
     	
-
     	<div id="main" align="center">
     		<div class="container">
     			
@@ -80,12 +64,6 @@
 		    	
     		</div>
     	</div>
-    	<div id="footer">
-    	<span>JAFAR</span>
-    	<span>PROFUSION</span>
-    	<span>2021</span>
-    	</div>
-    </body>
 
-
-</html>
+		<?php include 'footer.php';?>
+    	

@@ -288,13 +288,15 @@ input[type=submit]{
 #addLine{ display: none; }
 
 #footer{
-	padding: 30px;
+	padding: 0px 30px;
 	border-top: 1px solid white;
 	color: white;
-	margin-top: 30px;
-	font-family: "Figtree", sans-serif;
 	text-align: right;
-	background-color: #d14343;
+	background-color: #111;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	display: block;
 }
 
 #footer span{
@@ -304,6 +306,7 @@ input[type=submit]{
 	font-size: 12PX;
 	letter-spacing: 1.5PX;
 	font-weight: bold;
+	display: inline-block;
 }
 
 
@@ -342,13 +345,17 @@ body.darkmode .thRow{
 	table-layout: fixed; 
 	margin-bottom:30px; 
 	color: #111;
+	
 }
-body.darkmode .rules-table{
-	color: white;
-	border-color: white;
-	background-color: rgba(0,0,0,0.7);
+	body.darkmode .rules-table{
+		color: white;
+		border-color: white;
+		background-color: rgba(0,0,0,0.7);
 
-}
+	}
+	.rules-table tbody tr td{
+		overflow: hidden;
+	}
 
 
 

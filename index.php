@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>JAFAR</title>
-        <meta charset="UTF-8">
-        <link href="styles/styles.css" rel="stylesheet">
-        <link rel="shortcut icon" type="image/jpg" href="images/JAFAR-favicon.ico"/>
-        <link rel="icon" type="image/png" href="images/JAFAR-favicon.png"/>
-        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-    </head>
-    <body>
-        
-
-        <?php include 'header.php';?>
+<?php include 'header.php';?>
 
         <form action="output.php" method="post" target="_blank">
             
@@ -212,8 +199,7 @@
                     </div>
             </div>
         </form>
-    </body>
-    <script type="text/javascript" src="scripts/form.js"></script>
+        
+        <?php include 'footer.php';?>
 
     
-</html>
