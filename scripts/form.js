@@ -6,6 +6,7 @@
     var xpos = 0;
     var pcComplete;
     var customRulesAmount = 0;
+    let darkModeOn = false;
 
     // resize for amount of panels
     function resizePanels(){
@@ -247,6 +248,17 @@
         }else{
             $( "#tracking" ).css( "display", "none" );
         }
+    });
+
+    // Toggle styling setting
+    $( "#modetoggle" ).click(function() {
+        $( "body" ).toggleClass("darkmode");
+        if($("#j_logo").attr("src") == "images/JAFAR-logotype.png"){
+            $("#j_logo").attr("src", "images/JAFAR-logotype-rev.png");
+        }else{
+            $("#j_logo").attr("src", "images/JAFAR-logotype.png");
+        }
+        
     });
 
 

@@ -1,51 +1,85 @@
 /* JAFAR - Stylesheet */
  
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,700;1,300&display=swap');
+
 *{box-sizing: border-box;}
-body{margin: 0; background-color: #333333;}
-
-
-
 
 body{ 
-	box-sizing: border-box; 
+
 	font-family: "Figtree", sans-serif;
 	background-image: url('../images/JAFAR_bg.png');
  	background-size:contain;
 	background-position: bottom right;
 	background-repeat: no-repeat;
 	height: 100vh;
+	margin: 0;
+
+	/* lightmode styling */
+	background-color: #EEEEEE;
+
 }
+body.darkmode{
+	/* darkmode styling */
+	background-color: #333333;
+}
+
+#modetoggle{
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	font-size: 30px;
+	cursor: pointer;
+
+}
+#modetoggle:hover{
+	font-weight: bold;
+}
+#modetoggle::before{
+	content:"\2609";
+	color: black;
+}
+body.darkmode #modetoggle::before{
+	content:"\263D";
+	color: white;
+}
+
 header{
 	background-color: white;
 	height: 12vh;
 	padding: 0 20%;
-
- 
 	vertical-align: middle;
-}
-header table{
-	height: 12vh;
-}
-header img{
-	height: 10vh;
-	width: auto;
-	display: block;
-	margin: 1vh 0;
-}
-header li{
-	text-align: right;
-	list-style-type: none;
-}
-header li a{
-	color: #333;
-	text-decoration: none;
-}
-header li a:hover{
-	color: white;
-	border-bottom: 2px solid #d14343;
-	background-color:#d14343;
-}
+	}
+	header table{
+		height: 12vh;
+	}
+	header img{
+		height: 10vh;
+		width: auto;
+		display: block;
+		margin: 1vh 0;
+	}
+	header li{
+		text-align: right;
+		list-style-type: none;
+	}
+	header li a{
+		color: #333;
+		text-decoration: none;
+	}
+	header li a:hover{
+		color: white;
+		border-bottom: 2px solid #d14343;
+		background-color:#d14343;
+	}
+	body.darkmode header{
+		background-color: #111;
+	}
+	body.darkmode header li a{
+		color: white;
+	}
+
+
+/* --- Panels ---- */
 #panelholder{
 	width: 60%;
 	height: 75vh;
@@ -59,25 +93,31 @@ header li a:hover{
 	-moz-box-shadow: 0px 0px 46px 2px rgba(0,0,0,0.29);
 	box-shadow: 0px 0px 46px 2px rgba(0,0,0,0.29);
 }
-
-.panel{
-	box-sizing: border-box;
-	color: #333;
-	height: calc(75vh - 20px);
-	display: inline-block;
-	position: relative;
-	border-right:1px solid white;
-	overflow-y: scroll;
+body.darkmode #panelholder{
+	background-color:  #333;
 }
 
-.panel h3{
-	padding:  12px 2% 10px 2%; 
-	display: block;
-}
-.panel > *:not(h3){
-	margin: 20px 2%; 
-	display: block;
-}
+	.panel{
+		box-sizing: border-box;
+		color: #333;
+		height: calc(75vh - 20px);
+		display: inline-block;
+		position: relative;
+		border-right:1px solid white;
+		overflow-y: scroll;
+	}
+	body.darkmode .panel{
+		color:  white;
+	}
+
+		.panel h3{
+			padding:  12px 2% 10px 2%; 
+			display: block;
+		}
+		.panel > *:not(h3){
+			margin: 20px 2%; 
+			display: block;
+		}
 
 #scroller{ left: 0; display: block; position: relative; transition: all 0.5s ease; }
 
@@ -187,9 +227,16 @@ header li a:hover{
 	border-radius: 5px; 
 	transition: all ease-in-out 0.15s;
 }
+body.darkmode #addAnother{
+	color:  white;
+	border-color: white;
+	
+}
 #addAnother:hover{
 	background-color: #EEE;
-	color: #333333;
+}
+body.darkmode #addAnother:hover{
+	background-color: #222;
 }
 /*--------------- custom replace section */
 
@@ -250,7 +297,14 @@ input[type=submit]{
 	background-color: #d14343;
 }
 
-#footer span{ background-color: #333333; padding: 10px; margin: 0px 5px; font-size: 12PX; letter-spacing: 1.5PX; font-weight: bold;}
+#footer span{
+	background-color: #333333;
+	padding: 10px;
+	margin: 0px 5px;
+	font-size: 12PX;
+	letter-spacing: 1.5PX;
+	font-weight: bold;
+}
 
 
 
