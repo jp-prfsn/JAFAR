@@ -194,7 +194,10 @@
                     </div><div class="panel">
 
                         <h3>Code Doctor</h3>
+                        <h4>Filesize:</h4>
                         <div id="codeDoctorSizeReport"></div>
+                        <hr>
+                        <h4>Class utilisation:</h4>
                         <div id="codeDoctorClassReport"></div>
                         <ul id="unusedClasses">
 

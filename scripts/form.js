@@ -294,19 +294,26 @@
         }
         // Report Back
         // Class Utility
-        if( ((totalUnusedClasses/matches.length)*100) < 2 ){
-            // very few unused classes
-            document.getElementById("codeDoctorClassReport").textContent = 
-            `Very few classes are unused in this document - nice.`;
-        }else if( ((totalUnusedClasses/matches.length)*100) < 25 ){
-            // some unused classes
-            document.getElementById("codeDoctorClassReport").textContent = 
-            `About ${((totalUnusedClasses/matches.length)*100).toPrecision(2)}% of the classes I found are seemingly unused.`;
+        if(matches.length > 0){
+            if( ((totalUnusedClasses/matches.length)*100) < 2 ){
+                // very few unused classes
+                document.getElementById("codeDoctorClassReport").textContent = 
+                `Very few classes are unused in this document - nice.`;
+            }else if( ((totalUnusedClasses/matches.length)*100) < 25 ){
+                // some unused classes
+                document.getElementById("codeDoctorClassReport").textContent = 
+                `About ${((totalUnusedClasses/matches.length)*100).toPrecision(2)}% of the classes I found are seemingly unused.`;
+            }else{
+                // some unused classes
+                document.getElementById("codeDoctorClassReport").textContent = 
+                `About ${((totalUnusedClasses/matches.length)*100).toPrecision(2)}% of the classes I found are seemingly unused. That's pretty high!`;
+            }
         }else{
             // some unused classes
             document.getElementById("codeDoctorClassReport").textContent = 
-            `About ${((totalUnusedClasses/matches.length)*100).toPrecision(2)}% of the classes I found are seemingly unused. That's pretty high!`;
+            `Couldn't find any classes in this code...`;
         }
+        
         
         
         // File Size

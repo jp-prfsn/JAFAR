@@ -12,7 +12,8 @@
 
 	function writeLog($data) {
 		$output = $data;
-		echo "<script>console.log('LOG: " . $output . "' );</script>";
+		//TODO: What's the best way to provide a log of changes made? These script tags ain't gonna help.
+		//echo "<script>console.log('LOG: " . $output . "' );</script>";
 	}
 
 	function checkReplace($toFind, $replacement, $description) {
