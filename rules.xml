@@ -16,7 +16,11 @@
             <find><![CDATA[<hr style="margin: 0; border-top: 1px solid #d7d8d6;"/>]]></find>
             <replace><![CDATA[<table cellspacing='0' cellpadding='0' width='100%' border='0' bgcolor='#d7d8d6'><tr><td style='font-size:1px; line-height: 1px;' height='1'>&nbsp;</td></tr></table>]]></replace>
         </rule>
-        
+        <rule>
+            <desc>"Opens in new window" ALT</desc>
+            <find><![CDATA[ Opens in new window"]]></find>
+            <replace><![CDATA["]]></replace>
+        </rule>
     </client>
 
     <!-- HSBC EXPAT-->
@@ -51,6 +55,43 @@
             <find><![CDATA[<a href="https://www.expat.hsbc.com/help/security/" style="color: #333; text-decoration: underline;">Security Centre</a>.]]></find>
             <replace><![CDATA[<% if ((recipient.hsbcResidency == "HONG KONG") || (recipient.hsbcResidency == "HK")) { %>Security Centre at expa&#8205;t.h&#8205;sb&#8205;c.c&#8205;om/help/security/<% } else { %><a href="https://www.expat.hsbc.com/help/security/" style="color: #333; text-decoration: underline;">Security Centre</a>.<% } %>]]></replace>
         </rule>
+        <rule>
+            <desc>Unclickable Phone Number (313)</desc>
+            <find><![CDATA[ +44&nbsp;1534&nbsp;616313]]></find>
+            <replace><![CDATA[ <a href='tel:+441534616313' style='color: inherit; text-decoration:none;'>+44&nbsp;1534&nbsp;616313</a>]]></replace>
+        </rule>
+        <rule>
+            <desc>Unclickable Phone Number (212)</desc>
+            <find><![CDATA[ +44&nbsp;1534&nbsp;616212]]></find>
+            <replace><![CDATA[ <a href='tel:+441534616212' style='color: inherit; text-decoration:none;'>+44&nbsp;1534&nbsp;616212</a>]]></replace>
+        </rule>
+        <rule>
+            <desc>Terms Link (HK Safe)</desc>
+            <find><![CDATA[http://www.expat.hsbc.com/1/2/hsbc-expat/terms]]></find>
+            <replace><![CDATA[<% if ((recipient.hsbcResidency != "HONG KONG") && (recipient.hsbcResidency != "HK") && (recipient.hsbcResidency)) { %><a href="http://www.expat.hsbc.com/1/2/hsbc-expat/terms" style="color:#333; text-decoration:none;">http://www.expat.hsbc.com/1/2/hsbc-expat/terms</a><%}else{%>w&#8205;w<span>w.&#8205;e</span>xpa<span>t.&#8205;h</span>sb<span>c.&#8205;c</span>om/1/2/hsbc-expat/terms<%}%>]]></replace>
+        </rule>
+        <rule>
+            <desc>Replace Preheader</desc>
+            <find><![CDATA[<span style="display: none; line-height: 0; max-height: 0; font-size: 0; overflow: hidden; mso-hide: all;">HSBC Expat Logo</span>]]></find>
+            <replace><![CDATA[<span style="display: none; line-height: 0; max-height: 0; font-size: 0; overflow: hidden; mso-hide: all;">HSBC Expat</span>]]></replace>
+        </rule>
+        
+        <!-- RM Details -->
+        <rule>
+            <desc>RM Name</desc>
+            <find><![CDATA[%%RM_NAME%%]]></find>
+            <replace><![CDATA[<%=recipient.rmName%>]]></replace>
+        </rule>
+        <rule>
+            <desc>RM Email</desc>
+            <find><![CDATA[%%RM_EMAIL%%]]></find>
+            <replace><![CDATA[<%=recipient.rmEmail%>]]></replace>
+        </rule>
+        <rule>
+            <desc>RM Phone Number</desc>
+            <find><![CDATA[%%RM_PHONE%%]]></find>
+            <replace><![CDATA[<%=recipient.rmPhoneNumber%>]]></replace>
+        </rule>
     </client>
 
     <client name="HSBC Malta">
@@ -75,6 +116,129 @@
             <replace><![CDATA[<style>@media print{#_id { background-image: url('https://trackfun.it/track.ashx?a=p&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>');}} @media only screen and (max-width: 580px) {#_r { background-image: url('https://trackfun.it/track.ashx?a=r&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>');} } table.moz-email-headers-table {background-image:url('https://trackfun.it/track.ashx?a=f&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>')} div.OutlookMessageHeader {background-image:url('https://trackfun.it/track.ashx?a=f&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>')} blockquote #_id {background-image:url('https://trackfun.it/track.ashx?a=f&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>')} #MailContainerBody #_id {background-image:url('https://trackfun.it/track.ashx?a=f&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>')}</style><div id='_id'></div><div id='_r'></div><img src='https://trackfun.it/track.ashx?a=o&c=qYSBfCK177jiziXg27kG&m=<%= recipient.id %>&mid=<%= delivery.id %>&eid=<%= recipient.id %>' alt='' width='1' height='1' border='0' /></body>]]></replace>
         </rule>
     </client>
+
+ 
+ 
+	
+		
+    <client name="HSBC Bermuda">
+        <rule>
+            <desc>Mirror Page</desc>
+            <find><![CDATA[%%=v(@vawpURL)=%%]]></find>
+            <replace><![CDATA[<%@ include view='Bermuda_Mirror' %>]]></replace>
+        </rule>
+        <rule>
+            <desc>Salutation</desc>
+            <find><![CDATA[%%Indv_Titl_Txt%% %%Indv_Last_Name%%"]]></find>
+            <replace><![CDATA[<%= recipient.salutation %> <%= recipient.CustomerName %>]]></replace>
+        </rule>
+        <rule>
+            <desc>Unsubscribe Link</desc>
+            <find><![CDATA[https://email.marketing.hsbc.bm/nms/jsp/webForm.jsp?fo=bermudaUnsubscribe&id=%40rh35qpBpkp7VpjekOBD81g%3D%3D]]></find>
+            <replace><![CDATA[<%@ include view='Bermuda_Unsubscribe' %>]]></replace>
+        </rule>
+        <rule>
+            <desc>KD tag</desc>
+            <find><![CDATA[</body>]]></find>
+            <replace><![CDATA[<%@ include view='KickDynamicTag' %></body>]]></replace>
+        </rule>
+    </client>
+
+    <client name="HSBC CIIOM">
+        <rule>
+            <desc>Mirror Page</desc>
+            <find><![CDATA[%%=v(@vawpURL)=%%]]></find>
+            <replace><![CDATA[<%@ include view='HSBC_CIIOM_Mirror' %>]]></replace>
+        </rule>
+        <rule>
+            <desc>Salutation</desc>
+            <find><![CDATA[%%indv_titl_txt%% %%indv_last_name%%"]]></find>
+            <replace><![CDATA[<%= recipient.salutation %> <%= recipient.lastName %>]]></replace>
+        </rule>
+        <rule>
+            <desc>Unsubscribe Link</desc>
+            <find><![CDATA[%%=v(@unsubURL)=%%]]></find>
+            <replace><![CDATA[<%@ include view='HSBC_CIIOM_Unsubscribe' %>]]></replace>
+        </rule>
+        <rule>
+            <desc>Formatted Date</desc>
+            <find><![CDATA[%%=Format(Now(), "yyyy")=%%]]></find>
+            <replace><![CDATA[<%= formatDate(new Date(), '%4Y') %>]]></replace>
+        </rule>
+        <rule>
+            <desc>KD tag</desc>
+            <find><![CDATA[</body>]]></find>
+            <replace><![CDATA[<%@ include view="HSBC_CIIOM_Tracking_Tag" %><div class="h" style="white-space:nowrap;font:20px courier;color:#ffffff;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body>]]></replace>
+        </rule>
+    </client>
+
+
+    <client name="Screwfix Ireland">
+        <rule>
+            <desc>.COM Domain</desc>
+            <find><![CDATA[https://www.screwfix.com]]></find>
+            <replace><![CDATA[https://www.screwfix.ie]]></replace>
+        </rule>
+        <rule>
+            <desc>You have registered...</desc>
+            <find><![CDATA[({Attribute;3:IE_email_address})]]></find>
+            <replace><![CDATA[<%= recipient.email %>]]></replace>
+        </rule>
+        <rule>
+            <desc>Logo Image</desc>
+            <find><![CDATA[<img src="http://assets.fwdto.net/sf/<% if ( bauContentSheetObject.brand == \'ELECTRICFIX\' ) { %>e<% } else if ( bauContentSheetObject.brand == \'PLUMBFIX\' ) { %>p<% } else { %>s<% } %>fx-champions-logo.png" style="display: block; border: 0;" width="320" height="131" alt="<%= recipient.brandCode %>"><img src="http://assets.fwdto.net/screwfix/images/sfx-champions-logo.png" style="display: block; border: 0;" width="320" height="131" alt="Screwfix">]]></find>
+            <replace><![CDATA[]]></replace>
+        </rule>
+        <rule>
+            <desc>Adobe Include</desc>
+            <find><![CDATA[<%@ include option='NmsTracking_OpenFormulaTop' %>]]></find>
+            <replace><![CDATA[]]></replace>
+        </rule>
+        <rule>
+            <desc>Nav Bar (Lighting/Outdoors)</desc>
+            <find><![CDATA[<th align="left" class="nav-item" style="font-family: sf, sans-serif; font-size: 13px; padding: 10px 20px;"><a href="https://www.screwfix.com/c/outdoor-gardening/cat840458?utm_source=email&utm_medium=email&utm_campaign=<%= bauContentSheetObject.variationRef %>&utm_content=navigation&utm_term=outdoor" style="color:#FFFFFE; text-decoration: none;"><strong style="font-weight: 700;">Outdoor &amp; <br class="h">Gardening</strong></a></th>]]></find>
+            <replace><![CDATA[<th align="left" class="nav-item" style="font-family: sf, sans-serif; font-size: 13px; padding: 10px 20px;"><a href="https://www.screwfix.ie/c/electrical-lighting/lighting/cat840782?utm_source=email&utm_medium=email&utm_campaign=<%= bauContentSheetObject.variationRef %>&utm_content=navigation&utm_term=lighting" style="color:#FFFFFE; text-decoration: none;"><strong style="font-weight: 700;">Lighting</strong></a></th>]]></replace>
+        </rule>
+        <rule>
+            <desc>Webversion Link</desc>
+            <find><![CDATA[{?$view_online?}]]></find>
+            <replace><![CDATA[<%@ include view='MirrorPageUrl' %>]]></replace>
+            
+        </rule>
+        <rule>
+            <desc>Unsubscribe Link</desc>
+            <find><![CDATA[{?$optout_link?}]]></find>
+            <replace><![CDATA[<%@ include view='SDL_unsubscribe_link_only' %>]]></replace>
+        </rule>
+        <rule>
+            <desc>Facebook Link</desc>
+            <find><![CDATA[https://www.facebook.com/Screwfix]]></find>
+            <replace><![CDATA[https://www.facebook.com/ScrewfixIreland]]></replace>
+        </rule>
+        <rule>
+            <desc>Sprint Logo</desc>
+            <find><![CDATA[<td align="center" valign="top" width="107" class="footerIcon"><a href="https://www.screwfix.com/help/sprint/?utm_source=emailutm_medium=emailutm_campaign=<%= message.delivery.label %>&utm_content=footer&utm_term=Sprint&utm_block=footer" title="SCREWFIX SPRINT" target="_blank" _label="footer - screwfix sprint"><img src="https://assets.fwdto.net/sf/footer_sfx-sprint.png" style="display: block; border: 0; width: 100%; max-width: 107px; height: auto;" width="107" alt="SCREWFIX SPRINT" class="footerIcon" /></a></td>]]></find>
+            <replace><![CDATA[]]></replace>
+        </rule>
+
+        <rule>
+            <desc>Remove Forum Logo</desc>
+            <find><![CDATA[<td width="32" style="width: 32px;">&nbsp;</td><td align="center" width="60" valign="top"><a href="https://community.screwfix.com/?utm_source=email" title="Forum" target="_blank" style="display: inline-block;" _label="footer - Forum"><img src="https://assets.fwdto.net/sf/Image_757.png" style="display: block; border: 0; width: 60px; max-width: 60px;" width="60" alt="Forum" class="w60"/></a></td>]]></find>
+            <replace><![CDATA[]]></replace>
+        </rule>
+        <rule>
+            <desc>Twitter Link</desc>
+            <find><![CDATA[https://twitter.com/screwfix]]></find>
+            <replace><![CDATA[https://twitter.com/ScrewfixIreland]]></replace>
+        </rule>
+
+        <rule>
+            <desc>Socials Footer</desc>
+            <find><![CDATA[<table width="336" border="0" cellspacing="0" cellpadding="0" style="width: 336px;" class="w320"><tr><td align="center" width="60" valign="top"><a href="https://twitter.com/screwfix" title="Twitter" target="_blank" style="display: inline-block;" _label="footer - Twitter"><img src="https://assets.fwdto.net/sf/Image_754.png" style="display: block; border: 0; width: 60px; max-width: 60px;" width="60" alt="Twitter" class="w60" /></a></td><td width="32" style="width: 32px;">&nbsp;</td><td align="center" width="60" valign="top"><a href="https://www.facebook.com/Screwfix" title="Facebook" target="_blank" style="display: inline-block;" _label="footer - Facebook"><img src="https://assets.fwdto.net/sf/Image_755.png" style="display: block; border: 0; width: 60px max-width: 60px;" width="60" alt="Facebook" class="w60"/></a></td><td width="32" style="width: 32px;">&nbsp;</td><td align="center" width="60" valign="top"><a href="https://www.youtube.com/user/Screwfix" title="YouTube" target="_blank" style="display: inline-block;" _label="footer - YouTube"><img src="https://assets.fwdto.net/sf/Image_756.png" style="display: block; border: 0; width: 60px; max-width: 60px;" width="60" alt="YouTube" class="w60"/></a></td><td width="32" style="width: 32px;">&nbsp;</td><td align="center" width="60" valign="top"><a href="https://community.screwfix.com/?utm_source=email" title="Forum" target="_blank" style="display: inline-block;" _label="footer - Forum"><img src="https://assets.fwdto.net/sf/Image_757.png" style="display: block; border: 0; width: 60px; max-width: 60px;" width="60" alt="Forum" class="w60"/></a></td><td width="32" style="width: 32px;">&nbsp;</td><td align="center" width="60" valign="top"><a href="https://www.instagram.com/accounts/login/" title="Instagram" target="_blank" style="display: inline-block;" _label="footer - Instagram"><img src="https://assets.fwdto.net/sf/Image_758.png" style="display: block; border: 0; width: 60px; max-width: 60px;" width="60" alt="Instagram" class="w60"/></a></td></tr></table>]]></find>
+            <replace><![CDATA[<table width="270" border="0" cellspacing="0" cellpadding="0" style="width: 270px;" class="w320"><tr><td align="center" width="60" valign="top"><a href="https://twitter.com/ScrewfixIreland" title="Twitter" target="_blank" style="display: inline-block;" _label="footer - Twitter"><img src="https://assets.fwdto.net/MandS/202112_Abandoned_Basket/Image_754.png" style="display: block; border: 0; width: 60px; max-width: 60px;" width="60" alt="Twitter" class="w60" /></a></td><td width="10" style="width: 10px;">&nbsp;</td><td align="center" width="60" valign="top"><a href="https://www.facebook.com/ScrewfixIreland/" title="Facebook" target="_blank" style="display: inline-block;" _label="footer - Facebook"><img src="https://assets.fwdto.net/MandS/202112_Abandoned_Basket/Image_755.png" style="display: block; border: 0; width: 60px max-width: 60px;" width="60" alt="Facebook" class="w60"/></a></td><td width="10" style="width: 10px;">&nbsp;</td><td align="center" width="60" valign="top"><a href="https://www.youtube.com/user/Screwfix" title="YouTube" target="_blank" style="display: inline-block;" _label="footer - YouTube"><img src="https://assets.fwdto.net/MandS/202112_Abandoned_Basket/Image_756.png" style="display: block; border: 0; width: 60px; max-width: 60px;" width="60" alt="YouTube" class="w60"/></a></td><td width="10" style="width: 10px;">&nbsp;</td><td align="center" width="60" valign="top"><a href="https://www.instagram.com/accounts/login/?next=/screwfix_ireland/" title="Instagram" target="_blank" style="display: inline-block;" _label="footer - Instagram"><img src="https://assets.fwdto.net/MandS/202112_Abandoned_Basket/Image_758.png" style="display: block; border: 0; width: 60px; max-width: 60px;" width="60" alt="Instagram" class="w60"/></a></td></tr></table>]]></replace>
+        </rule>
+    </client>
+
 </rules>
 
 
