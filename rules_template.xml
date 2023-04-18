@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules>
+    <!-- JAFAR RULSET -->
+    <!-- RULES grouped by client -->
+    <!-- Use CDATA tags to preserve code -->
+    <!-- HAVE FUN! -->
+
+    <client name="Generic">
+        <rule>
+            <desc>Describe what this rule does</desc>
+            <find><![CDATA[search for this]]></find>
+            <replace><![CDATA[and replace with this]]></replace>
+        </rule>
+    </client>
+
+    <client name="Another Client">
+        <rule>
+            <desc>Describe what this rule does</desc>
+            <find><![CDATA[search for this]]></find>
+            <replace><![CDATA[and replace with this]]></replace>
+        </rule>
+    </client>
+</rules>
