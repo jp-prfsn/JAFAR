@@ -1,8 +1,11 @@
+
+
 <?php
 
 	// get original input & create empty error log
 	$copy = $_POST["original"];
 	$errorLog = "";
+	$imageArray = [];
 
 	// which brand are we dealing with?
 	// TODO: Detect brand from content
@@ -10,22 +13,51 @@
 	$brand = $_POST["clientSelect"];
 	$numberOfSegments = $_POST["numberOfSegments"];
 
-	function writeLog($data) {
-		$output = $data;
-		//TODO: What's the best way to provide a log of changes made? These script tags ain't gonna help.
-		//echo "<script>console.log('LOG: " . $output . "' );</script>";
-	}
+
 
 	function checkReplace($toFind, $replacement, $description) {
 		global $copy;
 		global $errorLog;
 		if(stripos($copy, $toFind) === false){
-			writeLog($description . " not found");
+			$errorLog .= "<hr>" . $description . " not found";
 		}else{
 			$copy = str_replace($toFind, $replacement, $copy);
-			writeLog($description . " found and replaced");
+			$errorLog .= "<hr>" . $description . " found";
 		}
 	}
+
+
+	function findImageUrls(){
+		global $imageArray;
+		global $copy;
+		if (preg_match_all('/https?:\/\/.*\.(?:png|jpg|gif)/', $copy, $match) > 0) {
+			foreach ($match[0] as $img)
+			{
+				
+				array_push($imageArray, $img);
+			}
+		}else{
+			echo "No images";
+		}
+		foreach ($imageArray as $ur)
+		{
+			$headers=get_headers($ur);
+
+			$size = preg_replace('/Content-Length: /', '', $headers[9]);
+			$adjustedValueKB = intval($size) / 1000;
+			$adjustedValueMB = intval($adjustedValueKB) / 1000;
+			echo $ur . " <br> " . $adjustedValueKB . " KB | "  . $adjustedValueMB . " MB<br>";
+			if($adjustedValueMB > 1){
+				echo "THIS IS A BIG OLD IMAGE!";
+			}
+			echo "<hr>";
+			
+		}
+	}
+	
+
+
+
 
 	function findOrphanedStyles(){
 
@@ -48,6 +80,11 @@
 	}else{
 		$errorLog .= "The title tag could not be found.<br>";
 	}
+
+
+
+
+
 
 	// load the rules file
 	$url = 'rules.xml';
@@ -219,5 +256,11 @@
 ?>
 
 
-
-<?php echo trim( $copy ) ?>
+<!-- build results page -->
+<textarea placeholder="<?php echo trim( $copy ) ?>"></textarea>
+<hr>
+<div><?php echo $errorLog ?></div>
+<hr>
+<div><?php echo findImageUrls() ?></div>
+<hr>
+<!-- build results page -->
