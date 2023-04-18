@@ -5,4 +5,6 @@
         </div>
     </body>
     <script type="text/javascript" src="scripts/form.js"></script>
+    <script type="text/javascript" src="scripts/codedoc.js"></script>
+    <script type="text/javascript" src="scripts/rulemaster.js"></script>
 </html>
