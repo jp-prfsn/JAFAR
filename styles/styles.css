@@ -315,7 +315,10 @@ input[type=submit]{
 #download{ padding: 10px; background: #f7bc2f; float:right; margin-right: 20px; color: #111; text-decoration: none; margin-top:-10px;}
 #download:hover{ background: #333; color: #f7bc2f; border: 1px solid #f7bc2f; }
 
-
+/* results styles */
+#results{
+	padding: 20px 20%;
+}
 
 
 

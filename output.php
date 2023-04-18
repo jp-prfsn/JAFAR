@@ -1,4 +1,4 @@
-
+<?php include 'header.php';?>
 
 <?php
 
@@ -22,7 +22,7 @@
 			$errorLog .= "<hr>" . $description . " not found";
 		}else{
 			$copy = str_replace($toFind, $replacement, $copy);
-			$errorLog .= "<hr>" . $description . " found";
+			$errorLog .= "<hr>" . $description . " found & replaced";
 		}
 	}
 
@@ -46,10 +46,16 @@
 			$size = preg_replace('/Content-Length: /', '', $headers[9]);
 			$adjustedValueKB = intval($size) / 1000;
 			$adjustedValueMB = intval($adjustedValueKB) / 1000;
-			echo $ur . " <br> " . $adjustedValueKB . " KB | "  . $adjustedValueMB . " MB<br>";
+
 			if($adjustedValueMB > 1){
-				echo "THIS IS A BIG OLD IMAGE!";
+				echo "<span style='color:red;'>&#10060; </span> Houston, we have a problem. Image is huuuuge.<br><span style='background-color:rgba(255,0,0,0.2);'>";
 			}
+			else{
+				echo "<span style='color:green;'>&check; </span><span>";
+			}
+
+			echo $ur . " <div align='right'><span style='border:1px solid black; padding:10px;'>" . $adjustedValueKB . " KB ("  . $adjustedValueMB . " MB)</span></div></span><br>";
+			
 			echo "<hr>";
 			
 		}
@@ -257,10 +263,21 @@
 
 
 <!-- build results page -->
-<textarea placeholder="<?php echo trim( $copy ) ?>"></textarea>
-<hr>
-<div><?php echo $errorLog ?></div>
-<hr>
-<div><?php echo findImageUrls() ?></div>
-<hr>
+<div id="results">
+	<h2>Your HTML</h2><br>
+	<textarea placeholder="<?php echo trim( $copy ) ?>"></textarea>
+	<hr>
+	<div>
+		<h2>Activity Log</h2>
+		<?php echo $errorLog ?>
+	</div>
+	<hr>
+	<div>
+		<h2>Image Checks</h2><br>
+		<?php echo findImageUrls() ?>
+	</div>
+	<hr>
+</div>
 <!-- build results page -->
+
+<?php include 'footer.php';?>
