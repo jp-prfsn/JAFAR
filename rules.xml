@@ -92,6 +92,11 @@
             <find><![CDATA[%%RM_PHONE%%]]></find>
             <replace><![CDATA[<%=recipient.rmPhoneNumber%>]]></replace>
         </rule>
+        <rule>
+            <desc>RM Phone Number</desc>
+            <find><![CDATA[%%RM_PHONE%%]]></find>
+            <replace><![CDATA[<%=recipient.rmPhoneNumber%>]]></replace>
+        </rule>
     </client>
 
     <client name="HSBC Malta">
@@ -102,12 +107,13 @@
         </rule>
         <rule>
             <desc>Salutation</desc>
-            <find><![CDATA[%%Indv_Titl_Txt%% %%Indv_Last_Name%%"]]></find>
+            <find><![CDATA[%%Indv_Titl_Txt%% %%Indv_Last_Name%%]]></find>
             <replace><![CDATA[<%= recipient.salutation %> <%= recipient.lastName %>]]></replace>
         </rule>
         <rule>
+            <!-- FIX THIS ONE (FIND IS NOT CONSISTENT)-->
             <desc>Unsubscribe Link</desc>
-            <find><![CDATA[https://dyn-regional.systems.uk.hsbc/content/hsbc-vam/mt/en_mt/messages/email/salesforce/personal-banking/business/%3C%@%20include%20view='Malta_Unsubscribe'%20%%3", ]]></find>
+            <find><![CDATA[https://dyn-regional.systems.uk.hsbc/content/hsbc-vam/mt/en_mt/messages/email/salesforce/personal-banking/business/%3C%@%20include%20view='Malta_Unsubscribe'%20%%3 ]]></find>
             <replace><![CDATA[<%@ include view='Malta_Unsubscribe' %>]]></replace>
         </rule>
         <rule>

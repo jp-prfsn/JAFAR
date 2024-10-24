@@ -19,10 +19,10 @@
 		global $copy;
 		global $errorLog;
 		if(stripos($copy, $toFind) === false){
-			$errorLog .= "<hr>" . $description . " not found";
+			$errorLog .= "<hr>" . $description . " not found. (Find string:" . $toFind . ")";
 		}else{
 			$copy = str_replace($toFind, $replacement, $copy);
-			$errorLog .= "<hr>" . $description . " found & replaced";
+			$errorLog .= "<hr><strong>" . $description . " found & replaced &#x2713;</strong>";
 		}
 	}
 
@@ -39,26 +39,36 @@
 		}else{
 			echo "No images";
 		}
+		echo "<table border='1' cellspacing='0' cellpadding='10'>";
 		foreach ($imageArray as $ur)
 		{
-			$headers=get_headers($ur);
+			echo "<tr>";
+			// get file size of image at this URL ($UR)
+			$headers = get_headers($ur, 1);
+			if (isset($headers['Content-Length'])) {
+				$size = $headers['Content-Length'];
 
-			$size = preg_replace('/Content-Length: /', '', $headers[9]);
-			$adjustedValueKB = intval($size) / 1000;
-			$adjustedValueMB = intval($adjustedValueKB) / 1000;
+				// convert from bytes TO MB
+				$size = $size / 1024 / 1024;
+				$size = round($size, 2);
 
-			if($adjustedValueMB > 1){
-				echo "<span style='color:red;'>&#10060; </span> Houston, we have a problem. Image is huuuuge.<br><span style='background-color:rgba(255,0,0,0.2);'>";
+				$justName = substr($ur, strrpos($ur, '/') + 1);
+
+				echo "<td style='text-overflow:ellipsis; width:80%;'><a href=" . $ur . ">" . $justName . "</a></td>";
+
+				
+				if($size > 1){
+					echo "<td style='background:red;'>";
+					echo $size . ' MB.' . "<span style='color:red; font-weight:bold;'>Warning: Image is over 1MB</span><br>";
+				}else{
+					echo "<td>";
+					echo $size . ' MB<br>';
+				}
+				echo "</td>";
 			}
-			else{
-				echo "<span style='color:green;'>&check; </span><span>";
-			}
-
-			echo $ur . " <div align='right'><span style='border:1px solid black; padding:10px;'>" . $adjustedValueKB . " KB ("  . $adjustedValueMB . " MB)</span></div></span><br>";
-			
-			echo "<hr>";
-			
+			echo "</tr>";
 		}
+		echo "</table>";
 	}
 	
 
@@ -88,6 +98,14 @@
 	}
 
 
+	// GET PREHEADER //
+	if (stripos($copy, 'TBD') == TRUE) {
+	    $campaignCode = $match[1];
+		$errorLog .= "<br>This email contains 'TBD' - maybe as the Preheader. Check that out..<hr>";
+	}
+
+
+
 
 
 
@@ -113,6 +131,9 @@
 		}
 		 
 	}
+
+	// Update Title if it is ugly
+	checkReplace($campaignCode, $brand, "Title Tag");
 
 	
 

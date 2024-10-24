@@ -1,0 +1,1 @@
+JAFAR is a tool for replacing code in email templates
